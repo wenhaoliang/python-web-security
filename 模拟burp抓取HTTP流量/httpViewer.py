@@ -5,8 +5,6 @@ import SocketServer
 import re
 from socket import * 
 
-addr = ('127.0.0.1', 8080)
-
 
 def getHost(dataPack):
 	result = re.search(r'Host:\s(.*?)\s', dataPack)
@@ -36,6 +34,7 @@ class myProxy(SocketServer.BaseRequestHandler):
 
 		
 if __name__ == '__main__':
+	addr = ('127.0.0.1', 8080)
 	server = SocketServer.ThreadingTCPServer(addr, myProxy)
 	server.serve_forever()
 
